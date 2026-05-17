@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+from keep_alive import start
 
 load_dotenv()
 
@@ -24,4 +25,5 @@ async def on_ready():
     except Exception as e:
         print(f"❌ Error: {e}")
 
+start()
 bot.run(TOKEN)
