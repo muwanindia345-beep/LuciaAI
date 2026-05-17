@@ -2,7 +2,6 @@ from flask import Flask
 from threading import Thread
 import requests
 import time
-import os
 
 app = Flask(__name__)
 
@@ -10,26 +9,25 @@ app = Flask(__name__)
 def home():
     return "LuciaAI Bot is alive! 🌸"
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+@app.route('/health')
+def health():
+    return {"status": "online", "bot": "LuciaAI"}
 
-def keep_alive():
-    url = os.getenv("RENDER_URL", "https://luciaai-qgyz.onrender.com")
+def ping_self():
+    time.sleep(30)  # startup ka wait
     while True:
         try:
-            requests.get(url)
-            print(f"✅ Self-ping successful!")
+            requests.get("https://luciaai-qgyz.onrender.com")
+            print("✅ Self-ping OK!")
         except Exception as e:
             print(f"❌ Ping failed: {e}")
-        time.sleep(600)  # har 10 min ping karega
+        time.sleep(600)
 
 def start():
-    # Flask server thread
-    t1 = Thread(target=run)
-    t1.daemon = True
-    t1.start()
+    # Ping thread
+    t = Thread(target=ping_self)
+    t.daemon = True
+    t.start()
     
-    # Self-ping thread
-    t2 = Thread(target=keep_alive)
-    t2.daemon = True
-    t2.start()
+    # Flask PORT=10000 Render default
+    app.run(host='0.0.0.0', port=10000)
