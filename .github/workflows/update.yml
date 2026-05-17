@@ -1,0 +1,48 @@
+name: EAS Update + Discord Notify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: EAS OTA Update
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Push OTA Update
+        run: |
+          eas update --branch production --message "${{ github.event.head_commit.message }}" --non-interactive
+
+      - name: Notify Discord
+        if: success()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{
+            "embeds": [{
+              "title": "🚀 LuciaAI Update Available!",
+              "description": "**Changes:** ${{ github.event.head_commit.message }}\n\n**Branch:** production\n\n**Type:** OTA Update (No APK needed!)",
+              "color": 8204380,
+              "footer": {"text": "LuciaAI Auto-Update System 🌸"},
+              "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+            }]
+          }' \
+          ${{ secrets.DISCORD_WEBHOOK }}
