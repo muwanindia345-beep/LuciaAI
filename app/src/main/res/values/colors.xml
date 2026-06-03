@@ -1,0 +1,13 @@
+<resources>
+    <color name="primary">#075E54</color>
+    <color name="primary_dark">#054C44</color>
+    <color name="accent">#25D366</color>
+    <color name="bubble_user">#DCF8C6</color>
+    <color name="bubble_ai">#FFFFFF</color>
+    <color name="chat_bg">#ECE5DD</color>
+    <color name="toolbar_text">#FFFFFF</color>
+    <color name="input_bg">#FFFFFF</color>
+    <color name="send_btn">#075E54</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#667781</color>
+</resources>

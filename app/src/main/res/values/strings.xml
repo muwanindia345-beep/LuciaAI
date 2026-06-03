@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LuciaAI</string>
+    <string name="hint_message">Message LuciaAI...</string>
+    <string name="send">Send</string>
+</resources>
