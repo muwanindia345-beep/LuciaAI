@@ -2,73 +2,68 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/chat_bg">
+    android:background="@color/bg_primary"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="120dp">
+        android:paddingBottom="40dp">
 
-        <!-- Glowing logo -->
+        <!-- Logo -->
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:src="@mipmap/ic_launcher"
-            android:background="@drawable/bg_logo_glow"
-            android:padding="8dp"
-            android:elevation="8dp"/>
+            android:layout_marginTop="48dp"
+            android:src="@mipmap/ic_launcher_round"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="Hello there! 👋"
+            android:layout_marginTop="20dp"
+            android:text="How can I help you?"
             android:textColor="@color/text_primary"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="How can I help you today?"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp"/>
-
+        <!-- Input bar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/bg_input"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_input_home"
             android:gravity="center_vertical"
+            android:minHeight="52dp"
+            android:orientation="horizontal"
             android:paddingStart="16dp"
-            android:paddingEnd="8dp">
+            android:paddingEnd="8dp"
+            android:paddingVertical="8dp">
 
             <TextView
+                android:id="@+id/tv_input_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Message Nova..."
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/text_hint"
                 android:textSize="15sp"/>
 
             <ImageButton
                 android:id="@+id/btn_home_send"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/bg_send_btn"
                 android:src="@drawable/ic_add"
                 android:tint="@color/toolbar_text"
-                android:padding="10dp"/>
+                android:padding="9dp"/>
 
         </LinearLayout>
 
+        <!-- Chips -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,10 +80,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_chip"
-                    android:text="✍️ Write"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"
-                    android:paddingHorizontal="16dp"
+                    android:text="✍️  Write"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="14dp"
                     android:paddingVertical="8dp"
                     android:layout_marginEnd="8dp"/>
 
@@ -96,10 +91,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_chip"
-                    android:text="📋 Summarize"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"
-                    android:paddingHorizontal="16dp"
+                    android:text="📋  Summarize"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="14dp"
                     android:paddingVertical="8dp"
                     android:layout_marginEnd="8dp"/>
 
@@ -107,10 +102,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_chip"
-                    android:text="💡 Explain"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"
-                    android:paddingHorizontal="16dp"
+                    android:text="💡  Explain"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="14dp"
                     android:paddingVertical="8dp"
                     android:layout_marginEnd="8dp"/>
 
@@ -118,31 +113,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_chip"
-                    android:text="🎯 More"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"
-                    android:paddingHorizontal="16dp"
+                    android:text="🎯  More"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="14dp"
                     android:paddingVertical="8dp"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="16dp"/>
 
             </LinearLayout>
         </HorizontalScrollView>
 
+        <!-- Recent chats -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Recent chats"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Recent"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.1"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recent_chats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:nestedScrollingEnabled="false"/>
 
     </LinearLayout>

@@ -1,16 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#1A1A2E</color>
-    <color name="primary_dark">#0F0F1A</color>
-    <color name="accent">#7C3AED</color>
-    <color name="accent_light">#A855F7</color>
-    <color name="bubble_user">#2D1B69</color>
-    <color name="bubble_ai">#1E1E2E</color>
-    <color name="chat_bg">#0F0F1A</color>
+    <color name="bg_primary">#0F0F0F</color>
+    <color name="bg_secondary">#1A1A1A</color>
+    <color name="bg_tertiary">#242424</color>
+    <color name="accent">#C084FC</color>
+    <color name="accent_dim">#7C3AED</color>
+    <color name="text_primary">#EFEFEF</color>
+    <color name="text_secondary">#888888</color>
+    <color name="text_hint">#555555</color>
+    <color name="divider">#2A2A2A</color>
+    <color name="bubble_user">#1E1E2E</color>
+    <color name="bubble_ai">#0F0F0F</color>
     <color name="toolbar_text">#FFFFFF</color>
-    <color name="input_bg">#1E1E2E</color>
-    <color name="send_btn">#7C3AED</color>
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#8B8B9E</color>
-    <color name="bottom_nav_bg">#1A1A2E</color>
-    <color name="card_bg">#1E1E2E</color>
+    <color name="chat_bg">#0F0F0F</color>
+    <color name="card_bg">#1A1A1A</color>
+    <color name="input_bg">#1A1A1A</color>
+    <color name="send_btn">#C084FC</color>
+    <color name="sidebar_bg">#141414</color>
 </resources>
