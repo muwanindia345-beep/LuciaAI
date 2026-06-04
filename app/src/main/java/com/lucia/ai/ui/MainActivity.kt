@@ -1,15 +1,14 @@
 package com.lucia.ai.ui
 
 import android.os.Bundle
-import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lucia.ai.R
 import com.lucia.ai.api.RetrofitClient
 import com.lucia.ai.model.ChatRequest
@@ -32,10 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-
         rvMessages = findViewById(R.id.rv_messages)
         etMessage = findViewById(R.id.et_message)
         btnSend = findViewById(R.id.btn_send)
@@ -46,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             stackFromEnd = true
         }
         rvMessages.adapter = adapter
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNav.setOnItemSelectedListener { true }
 
         btnSend.setOnClickListener {
             val text = etMessage.text.toString().trim()
