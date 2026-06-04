@@ -13,3 +13,9 @@ data class ChatRequest(
 data class ChatResponse(
     val reply: String
 )
+
+data class RecentChat(
+    val title: String,
+    val preview: String,
+    val time: String
+)

@@ -1,81 +1,42 @@
 package com.lucia.ai.ui
 
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lucia.ai.R
-import com.lucia.ai.api.RetrofitClient
-import com.lucia.ai.model.ChatRequest
-import com.lucia.ai.model.Message
-import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var rvMessages: RecyclerView
-    private lateinit var etMessage: EditText
-    private lateinit var btnSend: ImageButton
-    private lateinit var tvStatus: TextView
-    private lateinit var adapter: ChatAdapter
-    private val messages = mutableListOf<Message>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        rvMessages = findViewById(R.id.rv_messages)
-        etMessage = findViewById(R.id.et_message)
-        btnSend = findViewById(R.id.btn_send)
-        tvStatus = findViewById(R.id.tv_status)
-
-        adapter = ChatAdapter(messages)
-        rvMessages.layoutManager = LinearLayoutManager(this).apply {
-            stackFromEnd = true
-        }
-        rvMessages.adapter = adapter
+        loadFragment(HomeFragment())
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNav.setOnItemSelectedListener { true }
+        val fab = findViewById<FloatingActionButton>(R.id.fab_new_chat)
 
-        btnSend.setOnClickListener {
-            val text = etMessage.text.toString().trim()
-            if (text.isNotEmpty()) {
-                sendMessage(text)
-                etMessage.setText("")
+        fab.setOnClickListener {
+            loadFragment(ChatFragment())
+            bottomNav.selectedItemId = R.id.nav_home
+        }
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> loadFragment(HomeFragment())
+                R.id.nav_discover -> loadFragment(HomeFragment())
+                R.id.nav_history -> loadFragment(HomeFragment())
+                R.id.nav_profile -> loadFragment(HomeFragment())
             }
+            true
         }
     }
 
-    private fun sendMessage(text: String) {
-        val time = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
-        adapter.addMessage(Message(text, true, time))
-        rvMessages.scrollToPosition(messages.size - 1)
-
-        tvStatus.text = "typing..."
-        btnSend.isEnabled = false
-
-        lifecycleScope.launch {
-            try {
-                val response = RetrofitClient.instance.sendMessage(ChatRequest(text))
-                val aiTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
-                adapter.addMessage(Message(response.reply, false, aiTime))
-                rvMessages.scrollToPosition(messages.size - 1)
-                tvStatus.text = "online"
-            } catch (e: Exception) {
-                adapter.addMessage(Message("Error: ${e.message}", false, time))
-                rvMessages.scrollToPosition(messages.size - 1)
-                tvStatus.text = "online"
-            } finally {
-                btnSend.isEnabled = true
-            }
-        }
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }
