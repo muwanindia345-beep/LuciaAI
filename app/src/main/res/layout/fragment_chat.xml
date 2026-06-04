@@ -1,102 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/chat_bg">
-
-    <TextView
-        android:id="@+id/tv_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="online"
-        android:textColor="@color/accent_light"
-        android:textSize="12sp"
-        android:paddingVertical="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_messages"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:clipToPadding="false"/>
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="12dp"/>
 
+    <!-- Typing status -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="90dp"
+        android:text="online"
+        android:textColor="@color/text_secondary"
+        android:textSize="11sp"/>
+
+    <!-- Floating input bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/chat_bg"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="10dp">
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_chat_input_float"
+        android:gravity="center_vertical"
+        android:minHeight="52dp"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp"
+        android:paddingVertical="8dp"
+        android:elevation="6dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Attach button -->
+        <ImageButton
+            android:id="@+id/btn_attach"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add"
+            android:tint="#8B8B9E"
+            android:padding="6dp"/>
+
+        <!-- Message input -->
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_input_bar"
-            android:orientation="vertical"
-            android:padding="12dp">
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="Message Nova..."
+            android:hintTextColor="@color/text_secondary"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:maxLines="4"
+            android:inputType="textMultiLine|textCapSentences"
+            android:paddingHorizontal="8dp"/>
 
-            <EditText
-                android:id="@+id/et_message"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="Reply to Nova..."
-                android:textColor="@color/text_primary"
-                android:textColorHint="@color/text_secondary"
-                android:textSize="15sp"
-                android:maxLines="4"
-                android:paddingBottom="8dp"/>
+        <!-- Send button -->
+        <ImageButton
+            android:id="@+id/btn_send"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_send_btn"
+            android:src="@drawable/ic_add"
+            android:tint="@color/toolbar_text"
+            android:padding="10dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageButton
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_icon_btn"
-                    android:src="@drawable/ic_add"
-                    android:tint="@color/text_primary"
-                    android:padding="8dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_chip"
-                    android:text="llama-3.3-70b"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="6dp"/>
-
-                <ImageButton
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_icon_btn"
-                    android:src="@android:drawable/ic_btn_speak_now"
-                    android:tint="@color/text_primary"
-                    android:padding="8dp"
-                    android:layout_marginStart="8dp"/>
-
-                <ImageButton
-                    android:id="@+id/btn_send"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_send_btn"
-                    android:src="@drawable/ic_add"
-                    android:tint="@color/toolbar_text"
-                    android:padding="10dp"
-                    android:layout_marginStart="8dp"/>
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
