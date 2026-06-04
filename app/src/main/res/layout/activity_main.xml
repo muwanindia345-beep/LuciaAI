@@ -70,7 +70,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_input"
             android:hint="@string/hint_message"
-            android:hintTextColor="@color/text_secondary"
             android:textColor="@color/text_primary"
             android:padding="12dp"
             android:maxLines="4"
@@ -95,7 +94,6 @@
         android:background="@color/bottom_nav_bg"
         app:itemIconTint="@color/text_secondary"
         app:itemTextColor="@color/text_secondary"
-        app:activeIndicatorColor="@color/accent"
         app:menu="@menu/bottom_nav_menu"/>
 
 </LinearLayout>
