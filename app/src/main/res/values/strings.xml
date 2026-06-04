@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">LuciaAI</string>
-    <string name="hint_message">Message LuciaAI...</string>
+    <string name="app_name">Nova AI</string>
+    <string name="hint_message">Message Nova...</string>
     <string name="send">Send</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_discover">Discover</string>
+    <string name="nav_history">History</string>
+    <string name="nav_profile">Profile</string>
 </resources>

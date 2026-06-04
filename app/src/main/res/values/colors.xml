@@ -1,13 +1,16 @@
 <resources>
-    <color name="primary">#075E54</color>
-    <color name="primary_dark">#054C44</color>
-    <color name="accent">#25D366</color>
-    <color name="bubble_user">#DCF8C6</color>
-    <color name="bubble_ai">#FFFFFF</color>
-    <color name="chat_bg">#ECE5DD</color>
+    <color name="primary">#1A1A2E</color>
+    <color name="primary_dark">#0F0F1A</color>
+    <color name="accent">#7C3AED</color>
+    <color name="accent_light">#A855F7</color>
+    <color name="bubble_user">#2D1B69</color>
+    <color name="bubble_ai">#1E1E2E</color>
+    <color name="chat_bg">#0F0F1A</color>
     <color name="toolbar_text">#FFFFFF</color>
-    <color name="input_bg">#FFFFFF</color>
-    <color name="send_btn">#075E54</color>
-    <color name="text_primary">#000000</color>
-    <color name="text_secondary">#667781</color>
+    <color name="input_bg">#1E1E2E</color>
+    <color name="send_btn">#7C3AED</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8B8B9E</color>
+    <color name="bottom_nav_bg">#1A1A2E</color>
+    <color name="card_bg">#1E1E2E</color>
 </resources>

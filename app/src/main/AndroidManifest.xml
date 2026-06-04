@@ -6,10 +6,10 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="LuciaAI"
+        android:label="Nova AI"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LuciaAI">
+        android:theme="@style/Theme.NovaAI">
 
         <activity
             android:name=".ui.MainActivity"
