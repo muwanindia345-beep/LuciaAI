@@ -52,7 +52,7 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/btn_notify"
+                android:id="@+id/btn_three_dot"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -80,16 +80,68 @@
         app:itemTextColor="@color/bottom_nav_selector"
         app:menu="@menu/bottom_nav_menu"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_new_chat"
+    <!-- New Chat pill button — bottom center, above nav -->
+    <TextView
+        android:id="@+id/btn_new_chat"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="@color/accent"
-        android:src="@drawable/ic_add"
-        android:tint="@color/toolbar_text"
-        app:elevation="8dp"
-        app:fabSize="normal"/>
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/bg_new_chat_pill"
+        android:gravity="center"
+        android:paddingHorizontal="28dp"
+        android:text="+ New chat"
+        android:textColor="@color/toolbar_text"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:elevation="10dp"/>
+
+    <!-- Bottom Sheet dim overlay -->
+    <View
+        android:id="@+id/dim_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:elevation="11dp"/>
+
+    <!-- Bottom Sheet: History -->
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_sheet"
+        android:orientation="vertical"
+        android:elevation="12dp"
+        android:translationY="480dp">
+
+        <!-- Drag Handle -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="#555577"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:text="Chat History"
+            android:textColor="@color/text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="12dp"/>
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

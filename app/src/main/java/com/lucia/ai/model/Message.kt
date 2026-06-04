@@ -19,3 +19,15 @@ data class RecentChat(
     val preview: String,
     val time: String
 )
+
+data class GitHubRelease(
+    val tag_name: String,
+    val name: String,
+    val body: String,
+    val assets: List<ReleaseAsset>
+)
+
+data class ReleaseAsset(
+    val name: String,
+    val browser_download_url: String
+)
