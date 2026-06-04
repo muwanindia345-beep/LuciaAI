@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://your-render-backend.onrender.com"
+    private const val BASE_URL = "https://luciaai-backend.onrender.com"
 
     val instance: ApiService by lazy {
         Retrofit.Builder()
